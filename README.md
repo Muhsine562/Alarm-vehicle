@@ -17,31 +17,47 @@ This project is used for the protection of vehicle in which it is designed again
 ## Circuit with proteus is ![image](https://user-images.githubusercontent.com/105424030/174375637-626f9d8f-f193-4019-bca7-1b30081a70e1.png)
 ## For the code that will be introduced in Arduino is the following:
 #include<LiquidCrystal.h>
+
 #include<SoftwareSerial.h>
+
 LiquidCrystal lcd(7,6,5,4,3,2);
+
 SoftwareSerial GSM(0,1);
+
 const int Switch=8;
+
 const int Sensor=9;
+
 int Buzzer=13;
 
 void stepup(){
+
   pinMode(Sensor,INPUT);
+  
   pinMode(Buzzer,OUTPUT);
+  
   Serial.begin(9600);
+  
   lcd.begin(16, 2);
+  
 }
 
 void loop()
 {
+
   if(digitalRead(Switch)==HIGH)
+  
   {
+  
     lcd.setCursor(0,0);
     lcd.print("Security System");
     lcd.setCursor(0,1);
     lcd.print(" on  ");
 
       if(digitalRead(Sensor)==HIGH)
+      
   {
+  
     lcd.setCursor(0, 0);
     lcd.print("Theft Detected");
     lcd.setCursor(0, 1);
@@ -50,13 +66,19 @@ void loop()
     digitalWrite(13,HIGH);
 
  sendSMS();
+ 
     delay(500);
+    
   }
   
   else
+  
 {
+
   digitalWrite(13,LOW);
+  
 }
+
   }
 
   
@@ -72,11 +94,15 @@ void loop()
     }
 
    void sendSMS()
+   
    {
+   
     Serial.println("AT+CMGD=1");
+    
     delay(100);
 
     Serial.println("AT+CMGD=1");
+    
     delay(100);
 
     Serial.print("AT+CMGW=");
@@ -87,6 +113,7 @@ void loop()
     delay(400);
 
     Serial.println("Alert: Theft Detected");
+    
     delay(100);
 
     Serial.write(26);
@@ -94,5 +121,7 @@ void loop()
     delay(100);
 
     Serial.println("AT+CMSS=1");
+    
     delay(100);
+    
    }
