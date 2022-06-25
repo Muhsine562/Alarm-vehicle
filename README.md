@@ -28,7 +28,7 @@ This project is used for the protection of vehicle in which it is designed again
 - VIBRATION SW-420 ![image](https://user-images.githubusercontent.com/105424030/174358113-2cafa765-a8c7-488b-818a-5543493489c4.png)
 - 
 ## Circuit with proteus is ![image](https://user-images.githubusercontent.com/105424030/174375637-626f9d8f-f193-4019-bca7-1b30081a70e1.png)
-## For the code that will be introduced in Arduino is the following:
+## For the code that will be upload in Arduino is the following:
 #include<LiquidCrystal.h>
 
 #include<SoftwareSerial.h>
