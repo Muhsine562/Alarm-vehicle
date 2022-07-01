@@ -1,0 +1,74 @@
+#include<LiquidCrystal.h>
+#include<SoftwareSerial.h>
+LiquidCrystal lcd(7, 6, 5, 4, 3, 2);
+SoftwareSerial GSM(0,1);
+const int Switch=8;
+const int Sensor=9;
+int Buzzer=13;
+
+void stepup(){
+  pinMode(Sensor,INPUT);
+  pinMode(Buzzer,OUTPUT);
+  Serial.begin(9600);
+  lcd.begin(16, 2);
+}
+
+void loop(){
+  if(digitalRead(Switch)==HIGH)
+  {
+    lcd.setCursor(0, 0);
+    lcd.print("Security System");
+    lcd.setCursor(0, 1);
+    lcd.print(" ON  ");
+
+   if(digitalRead(Sensor)==HIGH)
+   {
+    lcd.setCursor(0,0);
+    lcd.print("Theft Detected");
+    lcd.setCursor(0,1);
+    lcd.print("Sending SMS....  ");
+    
+    digitalWrite(13,HIGH);
+
+sendSMS();
+    delay(500);
+  }
+  else
+{
+  digitalWrite(13,LOW);
+}
+  }
+  else
+{
+    lcd.setCursor(0,0);
+    lcd.print("Security System");
+    lcd.setCursor(0,1);
+    lcd.print("Desactivated  ");
+    }
+    }
+
+   void sendSMS()
+   {
+    Serial.println("AT+CMGD=1");
+    delay(100);
+
+    Serial.println("AT+CMGD=1");
+    delay(100);
+
+    Serial.print("AT+CMGD=");
+    Serial.write(34);
+    Serial.print("+237********24");
+    Serial.write(34);
+    Serial.println();
+    delay(400);
+
+    Serial.println("Alert: Theft Detected");
+    delay(100);
+
+    Serial.write(26);
+    delay(100);
+    delay(100);
+
+    Serial.println("AT+CMSS=1");
+    delay(100);
+   }
