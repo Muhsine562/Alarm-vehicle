@@ -33,7 +33,7 @@ Vehicle alarm systems are important for several reasons, primarily related to se
 
 Overall, vehicle alarm systems play a crucial role in safeguarding vehicles and their contents from theft and damage. They also offer additional benefits like lower insurance costs, increased resale value, and greater peace of mind for vehicle owners.
 
-## The first time we need the components of the circuit done this project,these components are as follows
+## The components required for this projet
 -Arduino uno ![image](https://user-images.githubusercontent.com/105424030/174350010-5d2ea934-e236-4961-98d7-d8bec1cf19a3.png)
 
 -BC547 ![image](https://user-images.githubusercontent.com/105424030/174350672-71726d88-0a64-4ec8-b146-7492c5aba117.png)
